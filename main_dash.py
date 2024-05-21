@@ -172,7 +172,7 @@ def local_shap(client_id):
         client_index = features.index.get_loc(client_id)  # On récupère l'index du client dans le DataFrame features
         
         # On récupère les valeurs SHAP spécifiques au client :
-        client_shap_values = shap_values[1][client_index]
+        client_shap_values = shap_values[client_index]
         
         # On crée une explication SHAP pour le client :
         exp = shap.Explanation(values = client_shap_values, 
