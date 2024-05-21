@@ -145,7 +145,7 @@ def prediction(client_id):
 # Route qui affiche la feature importance globale via un summary plot shap :
 @app.route('/global_shap', methods=['GET'])
 def global_shap():
-    shap.summary_plot(shap_values[1], 
+    shap.summary_plot(shap_values, 
                       features=features.values, 
                       feature_names=features.columns,
                       plot_type='violin',
@@ -176,7 +176,7 @@ def local_shap(client_id):
         
         # On crée une explication SHAP pour le client :
         exp = shap.Explanation(values = client_shap_values, 
-                               base_values = explainer.expected_value[1], 
+                               base_values = explainer.expected_value, 
                                data = features.iloc[client_index], 
                                feature_names=features.columns)
         plt.figure()
