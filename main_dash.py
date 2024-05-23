@@ -212,7 +212,7 @@ def get_client_data():
 @app.route('/client_raw_data', methods=['GET'])
 def get_client_raw_data():
     df_brut = load_brut_data("./data/subset_train_brut.csv")
-    df_brut['DAYS_BIRTH'] = df_brut['DAYS_BIRTH'].apply(lambda x: int(np.abs(x) // 365))
+    df_brut['YEARS_BIRTH'] = df_brut['DAYS_BIRTH'].apply(lambda x: int(np.abs(x) // 365))
     return df_brut.to_json(orient='records')
 
 @app.route('/scaled_data', methods=['GET'])
